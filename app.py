@@ -4,9 +4,9 @@ from flask_restful import Resource, Api
 app = Flask(__name__)
 api = Api(app)
 
-class Hello(Resource):
-    def get(self):
-        return 'Hello World'
+class Student(Resource):
+    def get(self,name):
+        return {'student': name}
 
-api.add_resource(Hello, '/hello') #http://127.0.0.1:5000/hello
+api.add_resource(Student, '/student/<name>') #http://127.0.0.1:5000/student/<name>
 app.run(port=5000)
