@@ -12,10 +12,12 @@ class Catalog(Resource):
 class Types(Resource):
     def get(self, type_name ):
         return catalog_list[type_name]
-
-        
-
+    def put(self, type_name):
+        catalog_list[type_name]['price']= 576767
+        return catalog_list[type_name]
+    def delete(self, type_name):
+        del catalog_list[type_name]
+        return catalog_list
 api.add_resource(Catalog, '/catalog_list') #http://127.0.0.1:5000/catalog_list
 api.add_resource(Types, '/type/<type_name>') #http://127.0.0.1:5000/type_name
-
 app.run(host='0.0.0.0',port=5000)
