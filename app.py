@@ -4,9 +4,18 @@ from flask_restful import Resource, Api
 app = Flask(__name__)
 api = Api(app)
 
-class Student(Resource):
-    def get(self,name):
-        return {'student': name}
+catalog_list={"type1":{"price":10},"type2":{"price":20},"type3":{"price":30}}
 
-api.add_resource(Student, '/student/<name>') #http://127.0.0.1:5000/student/<name>
-app.run(port=5000)
+class Catalog(Resource):
+    def get(self):
+        return catalog_list
+class Types(Resource):
+    def get(self, type_name ):
+        return catalog_list[type_name]
+
+        
+
+api.add_resource(Catalog, '/catalog_list') #http://127.0.0.1:5000/catalog_list
+api.add_resource(Types, '/type/<type_name>') #http://127.0.0.1:5000/type_name
+
+app.run(host='0.0.0.0',port=5000)
