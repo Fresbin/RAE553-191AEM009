@@ -10,9 +10,11 @@ api = Api(app)
 catalog_list={"type1":{"price":10},"type2":{"price":20},"type3":{"price":30}}
 
 class Catalog(Resource):
+    @jwt_required()
     def get(self):
         return catalog_list
 class Types(Resource):
+    @jwt_required()
     def get(self, type_name ):
         return catalog_list[type_name]
     def put(self, type_name):
