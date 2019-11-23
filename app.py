@@ -1,7 +1,10 @@
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api, reqparse
+from flask_jwt import JWT, jwt_required
 
+from security import authenticate, identity
 app = Flask(__name__)
+app.secret_key = 'toms@77'
 api = Api(app)
 
 catalog_list={"type1":{"price":10},"type2":{"price":20},"type3":{"price":30}}
