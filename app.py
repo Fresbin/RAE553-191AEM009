@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_restful import Resource, Api
+from flask_restful import Resource, Api, reqparse
 
 app = Flask(__name__)
 api = Api(app)
@@ -13,7 +13,10 @@ class Types(Resource):
     def get(self, type_name ):
         return catalog_list[type_name]
     def put(self, type_name):
-        catalog_list[type_name]['price']= 576767
+        parser = reqparse.RequestParser()
+        parser.add_argument("price")
+        args = parser.parse_args()
+        catalog_list[type_name]['price'] = args['price']
         return catalog_list[type_name]
     def delete(self, type_name):
         del catalog_list[type_name]
