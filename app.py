@@ -6,7 +6,7 @@ from security import authenticate, identity
 app = Flask(__name__)
 app.secret_key = 'toms@77'
 api = Api(app)
-
+jwt = JWT(app, authenticate, identity)
 catalog_list={"type1":{"price":10},"type2":{"price":20},"type3":{"price":30}}
 
 class Catalog(Resource):
