@@ -33,3 +33,17 @@ class Types(Resource):
             return catalog_list[type_name]
         else:
             return "Error {} type is not in catalog list".format(type_name)
+    def post(self, name):
+        if sel.find_by_name(name):
+            return {'message': "An type with name '{}' already exists.".foramt(name)}
+
+        data = Type.parser.parse_args()
+
+        type = {'name': name, 'price': data['price']}
+
+        try:
+            Type.insert(type)
+        except:
+            return {"message": "An error occured inserting the type."}, 500
+
+        return type, 201            
