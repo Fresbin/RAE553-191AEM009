@@ -4,7 +4,7 @@ from flask_jwt import JWT, jwt_required
 
 from security import authenticate, identity
 from user import UserRegister
-from catalog import Catalog , catalog_list, Types
+from item import Catalog , catalog_list, Types
 
 
 app = Flask(__name__)

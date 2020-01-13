@@ -9,7 +9,7 @@ cursor.execute(create_table)
 create_table = "CREATE TABLE IF NOT EXISTS types (name text, price real)"
 cursor.execute(create_table)
 
-cursor.execute("INSERT INTO types VALUES ('type2', 250)")
+cursor.execute("INSERT INTO types VALUES ('test', 250)")
 
 connection.commit()
 
